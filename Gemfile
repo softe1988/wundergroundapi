@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'bootstrap'
+gem 'bootstrap-sass', '~>3.3.4'
 gem 'wunderground'
 
 gem 'httparty'
