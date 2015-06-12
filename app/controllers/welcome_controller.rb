@@ -1,22 +1,8 @@
 class WelcomeController < ApplicationController
   
-	require 'open-uri'
-	require 'json'
   
   def index
-# 	@states = %w(HI AK CA OR WA ID UT NV AZ NM CO WY MT ND SD NB KS OK TX LA AR MO IA MN WI IL IN MI OH KY TN MS AL GA FL SC NC VA WV DE MD PA NY NJ CT RI MA VT NH ME DC)
-	
-# 	@states.sort!
-	
-# 	response = HTTParty.get("http://api.wunderground.com/api/dc525e7ffa52770b/geolookup/conditions/q/#{params[:state]}/#{params[:city]}.json")
-	
-#   @location = response['city']['state']
-#   @temp_f = response['current_observation']['temp_f']
-#   @temp_c = response['current_observation']['temp_c']
-#   @weather_icon = response['current_observation']['icon_url']
-#   @weather_words = response['current_observation']['weather'] 
-#   @forecast_link = response['current_observation']['forecast_url']
-#   @real_feel = response['current_observation']['feelslike_f']
+
   @states = %w(HI AK CA OR WA ID UT NV AZ NM CO WY MT ND SD NB KS OK TX LA AR MO IA MN WI IL IN MI OH KY TN MS AL GA FL SC NC VA WV DE MD PA NY NJ CT RI MA VT NH ME DC)
   	@states.sort!
 
@@ -27,7 +13,7 @@ class WelcomeController < ApplicationController
 	  		end
 
 	  		if params[:state] == ""
-	  			url = "http://api.wunderground.com/api/dc525e7ffa52770b/geolookup/conditions/q/#{params[:country]}/#{params[:city]}.json"
+	  			url = "http://api.wunderground.com/api/dc525e7ffa52770b/geolookup/conditions/q/#{params[:state]}/#{params[:city]}.json"
 	  		else
 	  			url = "http://api.wunderground.com/api/dc525e7ffa52770b/geolookup/conditions/q/#{params[:state]}/#{params[:city]}.json"
 	  		end
@@ -39,7 +25,7 @@ class WelcomeController < ApplicationController
 				  @location = parsed_json['location']['city']
 				  @temp_f = parsed_json['current_observation']['temp_f']
 				  @temp_c = parsed_json['current_observation']['temp_c']
-				  @icon = parsed_json['current_observation']['icon_url']
+				  @weather_icon = parsed_json['current_observation']['icon_url']
 				  @in_words = parsed_json['current_observation']['weather']
 				  @forecast_link = parsed_json['current_observation']['forecast_url']
 				  @real_feel = parsed_json['current_observation']['feelslike_f']
@@ -61,5 +47,5 @@ class WelcomeController < ApplicationController
   @forecast_link = response['current_observation']['forecast_url']
   @real_feel = response['current_observation']['feelslike_f']
   end
-  end
+ end
 end
