@@ -30,7 +30,7 @@ class WelcomeController < ApplicationController
 				  @forecast_link = parsed_json['current_observation']['forecast_url']
 				  @real_feel = parsed_json['current_observation']['feelslike_f']
 	  		end
-  end
+  	end
   elsif params[:city] == "" && params[:button_pushed] == true
   		redirect_to find_weather_path
   		
